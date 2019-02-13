@@ -11,15 +11,21 @@
     <table>
         <tr>
             <th>Date</th>
-            <th>Type</th>
-            <th>Calories</th>
+            <th>Meal Type</th>
+            <th>Calories per Meal</th>
         </tr>
         <c:forEach items="${mealsTo}" var="mealTo">
-            <c:set var="color" value="${mealTo.excess == true ? 'Tomato' : 'MediumSeaGreen'}"/>
-            <tr style="background-color:${color};">
+            <tr style="background-color:${mealTo.excess ? 'Tomato' : 'MediumSeaGreen'};">
                 <td><javatime:format value="${mealTo.dateTime}" style="MS" /></td>
                 <td>${mealTo.description}</td>
                 <td>${mealTo.calories}</td>
+                <c:set var="id" value="${mealTo.id}"/>
+                <td>
+                    <a type="button" href="meals?action=edit&id=${id}">Edit</a>
+                </td>
+                <td>
+                    <a type="button" href="meals?action=delete&id=${id}">Delete</a>
+                </td>
             </tr>
         </c:forEach>
     </table>
