@@ -2,10 +2,8 @@ package ru.javawebinar.topjava.dao;
 
 import ru.javawebinar.topjava.mock.MockedData;
 import ru.javawebinar.topjava.model.Meal;
-import ru.javawebinar.topjava.model.MealTo;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MealDaoImpl implements MealDao {
@@ -19,21 +17,25 @@ public class MealDaoImpl implements MealDao {
     }
 
     @Override
-    public void add(Meal meal) {
+    public Meal add(Meal meal) {
         meal.setId(id.getAndIncrement());
+        return meal;
     }
 
     @Override
-    public void update(Meal meal) {
+    public Meal update(Meal meal) {
         Meal mealToUpdate = get(meal.getId());
         mealToUpdate.setDateTime(meal.getDateTime());
         mealToUpdate.setDescription(meal.getDescription());
         mealToUpdate.setCalories(meal.getCalories());
+
+        return null;
     }
 
     @Override
-    public void delete(int id) {
+    public Meal delete(int id) {
         meals.remove(get(id));
+        return null;
     }
 
     @Override

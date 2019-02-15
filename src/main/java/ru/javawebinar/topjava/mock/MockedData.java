@@ -13,6 +13,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MockedData {
 
+    private
+
     public static List<Meal> createMealsList(AtomicInteger id) {
         if (id == null) {
             id = new AtomicInteger(0);
